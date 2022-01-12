@@ -8,6 +8,7 @@ import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,8 @@ public class HeroRepositoryImpl implements HeroRepository {
     }
 
     public List<Hero> findByName(String name){
-        List<HeroEntity> heroEntityList = heroCRUD.findAll(HeroSpecifications.nameEquals(name));
+        Specification<HeroEntity> specification = HeroSpecifications.nameEquals(name); //criteriaQuery builder
+        List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
         return heroMapper.toHeroList(heroEntityList);
     }
 
