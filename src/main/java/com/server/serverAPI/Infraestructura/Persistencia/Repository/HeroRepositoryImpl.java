@@ -1,8 +1,7 @@
 package com.server.serverAPI.Infraestructura.Persistencia.Repository;
 
-
-import com.server.serverAPI.Dominio.Modelo.Hero;
-import com.server.serverAPI.Dominio.Repositorio.HeroRepository;
+import com.server.serverAPI.Domain.Modelo.Hero;
+import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
@@ -10,7 +9,10 @@ import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +31,7 @@ public class HeroRepositoryImpl implements HeroRepository {
     @Override
     public Hero save(Hero hero) {
         HeroEntity heroEntity = heroCRUD.save(heroMapper.toHeroEntity(hero));
+
         return heroMapper.toHero(heroEntity);
     }
 
@@ -61,6 +64,14 @@ public class HeroRepositoryImpl implements HeroRepository {
         Specification<HeroEntity> specification = HeroSpecifications.nameEquals(name); //criteriaQuery builder
         List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
         return heroMapper.toHeroList(heroEntityList);
+    }
+
+    @Override
+    public List<Hero> findByDateBefore(Date date) {
+            //Date date = new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
+            Specification<HeroEntity> specification = HeroSpecifications.beforeOf(date); //criteriaQuery builder
+            List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
+            return heroMapper.toHeroList(heroEntityList);
     }
 
 }

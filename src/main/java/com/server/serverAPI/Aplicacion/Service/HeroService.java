@@ -1,7 +1,7 @@
 package com.server.serverAPI.Aplicacion.Service;
 
-import com.server.serverAPI.Dominio.Modelo.Hero;
-import com.server.serverAPI.Dominio.Repositorio.HeroRepository;
+import com.server.serverAPI.Domain.Modelo.Hero;
+import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Infraestructura.Error.HeroNoEncontrado;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 
@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 import static com.server.serverAPI.Aplicacion.Mensajes.ConstMensajes.*;
@@ -28,6 +29,12 @@ public class HeroService {
         if (heroBd == null) {
             return new ResponseEntity<>(new Respuesta<>(HerosaveErr), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        //logger.info(heroRepository.findByDateBefore("01/01/2022").toString());
+
+       // String a = HeroServiceUtil.convertiFecha(heroBd.getCreatedDate());
+       // logger.info(a);
+
         return new ResponseEntity<>(new Respuesta<>(HerosaveSucc, heroBd), HttpStatus.OK);
     }
 
@@ -65,6 +72,17 @@ public class HeroService {
     public Respuesta<Hero> findHeroById(Integer id) {
         Hero hero = HeroServiceUtil.findHeroByid(id, heroRepository);
         return new Respuesta<>(hero);
+    }
+
+    public ResponseEntity<Respuesta<List<Hero>>> findByDateBefore(String fecha) {
+        Date date = HeroServiceUtil.convertirFecha(fecha);
+        if(date == null) {
+            return new ResponseEntity<>(new Respuesta<>("Formato de fecha incorrecto!"), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        List<Hero> heroList = heroRepository.findByDateBefore(date);
+        return heroList.isEmpty()
+            ? new ResponseEntity<>(new Respuesta<>("No se encontraron héroes con fecha de creación antes de "+fecha), HttpStatus.OK)
+            : new ResponseEntity<>(new Respuesta<>("Héroes encontrados con éxito!",heroList), HttpStatus.OK);
     }
 
 }

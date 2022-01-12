@@ -1,10 +1,10 @@
-package com.server.serverAPI.Dominio.Repositorio;
+package com.server.serverAPI.Domain.Repositorio;
 
-import com.server.serverAPI.Dominio.Modelo.Hero;
-import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
+import com.server.serverAPI.Domain.Modelo.Hero;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public interface HeroRepository {
 
@@ -21,4 +21,6 @@ public interface HeroRepository {
     Boolean existsById(Integer id);
 
     List<Hero> findByName(String name);
+
+    List<Hero> findByDateBefore(Date date);
 }

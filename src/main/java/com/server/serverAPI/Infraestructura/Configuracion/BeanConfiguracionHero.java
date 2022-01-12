@@ -2,7 +2,7 @@ package com.server.serverAPI.Infraestructura.Configuracion;
 
 
 import com.server.serverAPI.Aplicacion.Service.HeroService;
-import com.server.serverAPI.Dominio.Repositorio.HeroRepository;
+import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

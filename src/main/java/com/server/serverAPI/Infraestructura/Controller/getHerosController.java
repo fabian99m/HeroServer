@@ -1,7 +1,7 @@
 package com.server.serverAPI.Infraestructura.Controller;
 
 import com.server.serverAPI.Aplicacion.Service.HeroService;
-import com.server.serverAPI.Dominio.Modelo.Hero;
+import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 
 import org.springframework.beans.factory.annotation.Autowired;

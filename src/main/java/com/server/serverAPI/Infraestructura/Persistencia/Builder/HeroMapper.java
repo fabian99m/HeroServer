@@ -1,7 +1,6 @@
 package com.server.serverAPI.Infraestructura.Persistencia.Builder;
 
-
-import com.server.serverAPI.Dominio.Modelo.Hero;
+import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -14,8 +13,9 @@ import java.util.List;
 public interface HeroMapper {
 
     @Mappings({
-            @Mapping(source = "codigo", target = "id"),
-            @Mapping(source = "nombre", target = "name"),
+            @Mapping(source = "codigo",  target = "id"),
+            @Mapping(source = "nombre",  target = "name"),
+            @Mapping(source = "createdDate", target = "createDate")
     })
     HeroEntity toHeroEntity(Hero hero);
 
