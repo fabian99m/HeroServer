@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
-import com.server.serverAPI.Infraestructura.Persistencia.Repository.HeroRepositoryImpl;;
+import com.server.serverAPI.Infraestructura.Persistencia.Repository.HeroRepositoryImpl;
 
 
 @Configuration

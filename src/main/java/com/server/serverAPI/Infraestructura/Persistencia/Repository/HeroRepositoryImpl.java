@@ -9,9 +9,9 @@ import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 @RequiredArgsConstructor
 public class HeroRepositoryImpl implements HeroRepository {
@@ -32,21 +32,33 @@ public class HeroRepositoryImpl implements HeroRepository {
     }
 
     @Override
-    public Optional<List<Hero>> findByNameEquals(String name) {
+    public List<Hero> findByNameEquals(String name) {
         Optional<List<HeroEntity>> heroOptionalEntity = heroCRUD.findByNameEquals(name);
-        return heroOptionalEntity.map(list -> heroMapper.toHeroList(list));
+        return heroOptionalEntity
+                .map(heroMapper::toHeroList)
+                .orElseGet(ArrayList::new);
     }
 
     @Override
     public Hero findById(Integer id) {
        return heroCRUD.findById(id)
-               .map(heroEntity -> heroMapper.toHero(heroEntity))
+               .map(heroMapper::toHero)
                .orElse(null);
     }
 
     @Override
     public void deleteHero(Integer id) {
         heroCRUD.deleteById(id);
+    }
+
+    @Override
+    public Boolean existsById(Integer id) {
+        return heroCRUD.existsById(id);
+    }
+
+    public List<Hero> findByName(String name){
+        List<HeroEntity> heroEntityList = heroCRUD.findAll(HeroSpecifications.nameEquals(name));
+        return heroMapper.toHeroList(heroEntityList);
     }
 
 }

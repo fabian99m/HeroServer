@@ -16,7 +16,7 @@ public class UpdateNameController {
     HeroService heroService;
 
     @PatchMapping()
-    public  ResponseEntity<Respuesta<Hero>> updateName(@RequestBody Hero hero){
+    public ResponseEntity<Respuesta<Hero>> updateName(@RequestBody Hero hero){
         return heroService.updateName(hero);
     }
 }

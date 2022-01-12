@@ -14,5 +14,12 @@ import com.server.serverAPI.Infraestructura.Error.HeroNoEncontrado;
         return heroBd;
     }
 
+    public static Boolean existsById(Integer codigo, HeroRepository heroRepository) {
+        Boolean flag = heroRepository.existsById(codigo);
+        if(!flag) {
+            throw new HeroNoEncontrado("Hero no existente!");
+        }
+        return true;
+    }
 
 }

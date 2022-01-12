@@ -22,7 +22,7 @@ public class getHeroByNameController {
     private HeroService heroService;
 
     @GetMapping(value = "/list", params = "nombre", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<Respuesta<List<Hero>>>  getheros(@RequestParam String nombre) {
+    public  ResponseEntity<Respuesta<List<Hero>>> getheros(@RequestParam String nombre) {
        return heroService.getHerosByName(nombre);
     }
 
