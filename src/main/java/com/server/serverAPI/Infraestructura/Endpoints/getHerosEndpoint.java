@@ -1,6 +1,6 @@
-package com.server.serverAPI.Infraestructura.Controller;
+package com.server.serverAPI.Infraestructura.Endpoints;
 
-import com.server.serverAPI.Aplicacion.Service.HeroService;
+import com.server.serverAPI.Aplicacion.Service.GetHerosService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 
@@ -15,14 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "hero")
-public class getHerosController {
+public class getHerosEndpoint {
 
     @Autowired
-    private HeroService heroService;
+    private GetHerosService getHerosService;
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Respuesta<List<Hero>>> getheros() {
-       return heroService.getHeros();
+       return getHerosService.getHeros();
     }
 
 }

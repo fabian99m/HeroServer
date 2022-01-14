@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class HeroServiceUtil {
 
-    static Logger logger = LoggerFactory.getLogger(HeroService.class);
+    static Logger logger = LoggerFactory.getLogger(HeroServiceUtil.class);
 
     public static  Hero findHeroByid(Integer codigo, HeroRepository heroRepository){
         Hero heroBd = heroRepository.findById(codigo);

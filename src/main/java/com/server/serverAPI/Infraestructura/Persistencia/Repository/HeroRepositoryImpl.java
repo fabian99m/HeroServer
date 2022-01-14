@@ -9,8 +9,6 @@ import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

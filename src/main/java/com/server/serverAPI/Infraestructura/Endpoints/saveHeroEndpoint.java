@@ -1,7 +1,8 @@
-package com.server.serverAPI.Infraestructura.Controller;
+package com.server.serverAPI.Infraestructura.Endpoints;
 
 
-import com.server.serverAPI.Aplicacion.Service.HeroService;
+
+import com.server.serverAPI.Aplicacion.Service.SaveHeroService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "hero")
-public class saveHeroController {
+public class saveHeroEndpoint {
 
     @Autowired
-    private HeroService heroService;
+    private SaveHeroService saveHeroService;
 
     @PostMapping("/save")
     public ResponseEntity<Respuesta<Hero>> saveHero(@RequestBody Hero hero) {
-        return heroService.saveHero(hero);
+        return saveHeroService.saveHero(hero);
     }
 }

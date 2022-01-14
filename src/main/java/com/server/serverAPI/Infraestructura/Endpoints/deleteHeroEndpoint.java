@@ -1,6 +1,6 @@
-package com.server.serverAPI.Infraestructura.Controller;
+package com.server.serverAPI.Infraestructura.Endpoints;
 
-import com.server.serverAPI.Aplicacion.Service.HeroService;
+import com.server.serverAPI.Aplicacion.Service.DeleteHeroService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 
@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("hero")
-public class deleteHeroController {
+public class deleteHeroEndpoint {
     
     @Autowired
-    private HeroService heroService;
+    private DeleteHeroService deleteHeroService;
 
     @DeleteMapping( params = "codigo")
     public ResponseEntity<Respuesta<Hero>> deleleHero(@RequestParam Integer codigo){
-        return heroService.deleteHeroById(codigo);
+        return deleteHeroService.deleteHeroById(codigo);
     }
 
 }
