@@ -32,19 +32,14 @@ public class HeroServiceUtil {
 
     public static LocalDate convertirFecha(String fecha) {
         try {
+            logger.info("Fecha recibida: "+fecha);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             return LocalDate.parse(fecha, formatter);
         } catch (DateTimeParseException e) {
+            logger.error(e.getMessage());
             return null;
         }
 
-      /*  Date dateout;
-        try { dateout = new SimpleDateFormat("dd/MM/yyyy").parse(fecha); }
-        catch (ParseException e) {
-            dateout = null;
-            logger.warn(e.toString());
-        }
-        return dateout;*/
     }
 
 }
