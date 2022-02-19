@@ -3,12 +3,11 @@ package com.server.serverAPI.Infraestructura.Configuracion;
 
 import com.server.serverAPI.Aplicacion.Service.*;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.Repository.HeroRepositoryImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 
 @Configuration

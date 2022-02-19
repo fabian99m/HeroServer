@@ -2,7 +2,6 @@ package com.server.serverAPI.Infraestructura.Error.ExceptionHandler;
 
 import com.server.serverAPI.Infraestructura.Error.ErrorGeneric;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

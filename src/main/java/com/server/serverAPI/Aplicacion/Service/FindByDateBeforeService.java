@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -17,8 +17,8 @@ public class FindByDateBeforeService {
     private final HeroRepository heroRepository;
 
     public ResponseEntity<Respuesta<List<Hero>>> findByDateBefore(String fecha) {
-        Date date = HeroServiceUtil.convertirFecha(fecha);
-        if(date == null) {
+        LocalDate date = HeroServiceUtil.convertirFecha(fecha);
+        if(null == date) {
             return new ResponseEntity<>(new Respuesta<>("Formato de fecha incorrecto!"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         List<Hero> heroList = heroRepository.findByDateBefore(date);

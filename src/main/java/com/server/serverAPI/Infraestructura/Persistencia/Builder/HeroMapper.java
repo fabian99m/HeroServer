@@ -15,11 +15,14 @@ public interface HeroMapper {
     @Mappings({
             @Mapping(source = "codigo",  target = "id"),
             @Mapping(source = "nombre",  target = "name"),
-            @Mapping(source = "createdDate", target = "createDate")
+            @Mapping( target = "createdDate", ignore = true)
     })
     HeroEntity toHeroEntity(Hero hero);
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(source = "createdDate", target = "createdDate")
+    })
     Hero toHero(HeroEntity heroEntity);
 
     List<Hero> toHeroList(List<HeroEntity> heroEntityList);

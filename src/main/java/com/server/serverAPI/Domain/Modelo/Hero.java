@@ -2,7 +2,7 @@ package com.server.serverAPI.Domain.Modelo;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class Hero {
@@ -11,6 +11,6 @@ public class Hero {
 
     private String nombre;
 
-    private Date createdDate;
+    private LocalDate createdDate;
 
 }

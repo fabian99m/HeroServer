@@ -5,12 +5,11 @@ import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,14 +60,15 @@ public class HeroRepositoryImpl implements HeroRepository {
     public List<Hero> findByName(String name){
         Specification<HeroEntity> specification = HeroSpecifications.nameEquals(name); //criteriaQuery builder
         List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
+
         return heroMapper.toHeroList(heroEntityList);
     }
 
     @Override
-    public List<Hero> findByDateBefore(Date date) {
-            //Date date = new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
+    public List<Hero> findByDateBefore(LocalDate date) {
             Specification<HeroEntity> specification = HeroSpecifications.beforeOf(date); //criteriaQuery builder
             List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
+
             return heroMapper.toHeroList(heroEntityList);
     }
 

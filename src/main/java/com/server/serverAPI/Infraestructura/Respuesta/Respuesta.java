@@ -1,14 +1,12 @@
 package com.server.serverAPI.Infraestructura.Respuesta;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
+
+import java.io.Serializable;
 
 @Setter
 @Getter

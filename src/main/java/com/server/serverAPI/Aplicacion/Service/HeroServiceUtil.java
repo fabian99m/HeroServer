@@ -6,9 +6,9 @@ import com.server.serverAPI.Infraestructura.Error.HeroNoEncontrado;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class HeroServiceUtil {
 
@@ -30,14 +30,21 @@ public class HeroServiceUtil {
         return true;
     }
 
-    public static Date convertirFecha(String fecha) {
-        Date dateout;
+    public static LocalDate convertirFecha(String fecha) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            return LocalDate.parse(fecha, formatter);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+
+      /*  Date dateout;
         try { dateout = new SimpleDateFormat("dd/MM/yyyy").parse(fecha); }
         catch (ParseException e) {
             dateout = null;
             logger.warn(e.toString());
         }
-        return dateout;
+        return dateout;*/
     }
 
 }

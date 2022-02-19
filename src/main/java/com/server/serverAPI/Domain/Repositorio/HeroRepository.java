@@ -2,8 +2,7 @@ package com.server.serverAPI.Domain.Repositorio;
 
 import com.server.serverAPI.Domain.Modelo.Hero;
 
-import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface HeroRepository {
@@ -22,5 +21,5 @@ public interface HeroRepository {
 
     List<Hero> findByName(String name);
 
-    List<Hero> findByDateBefore(Date date);
+    List<Hero> findByDateBefore(LocalDate date);
 }
