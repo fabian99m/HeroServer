@@ -12,7 +12,7 @@ public class DeleteHeroService  {
 
    private final HeroRepository heroRepository;
 
-    public ResponseEntity<Respuesta<Hero>> deleteHeroById(Integer id){
+    public ResponseEntity<Respuesta<Hero>> deleteHeroById(Long id){
 
         Hero heroBd = HeroServiceUtil.findHeroByid(id, heroRepository);
         heroRepository.deleteHero(id);

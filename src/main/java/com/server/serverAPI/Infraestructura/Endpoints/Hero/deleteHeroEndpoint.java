@@ -18,7 +18,7 @@ public class deleteHeroEndpoint {
     private DeleteHeroService deleteHeroService;
 
     @DeleteMapping( params = "codigo")
-    public ResponseEntity<Respuesta<Hero>> deleleHero(@RequestParam Integer codigo){
+    public ResponseEntity<Respuesta<Hero>> deleleHero(@RequestParam Long codigo){
         return deleteHeroService.deleteHeroById(codigo);
     }
 

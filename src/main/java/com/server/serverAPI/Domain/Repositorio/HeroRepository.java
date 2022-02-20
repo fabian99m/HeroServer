@@ -13,11 +13,11 @@ public interface HeroRepository {
 
     List<Hero> findByNameEquals(String name);
 
-    Hero findById(Integer id);
+    Hero findById(Long id);
 
-    void deleteHero(Integer id);
+    void deleteHero(Long id);
 
-    Boolean existsById(Integer id);
+    Boolean existsById(Long id);
 
     List<Hero> findByName(String name);
 

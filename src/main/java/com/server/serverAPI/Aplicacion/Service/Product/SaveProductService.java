@@ -20,7 +20,7 @@ public class SaveProductService {
 
     static Logger logger = LoggerFactory.getLogger(SaveProductService.class);
 
-    public ResponseEntity<Respuesta<Product>> saveHero(Product product) {
+    public ResponseEntity<Respuesta<Product>> savePurchase(Product product) {
         logger.info("Producto recibido: "+product);
         Product productBd = productRepository.save(product);
         if (productBd == null) {

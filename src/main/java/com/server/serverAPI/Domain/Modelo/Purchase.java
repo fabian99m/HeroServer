@@ -6,11 +6,11 @@ import lombok.Data;
 @Data
 public class Purchase {
 
-    private int purchaseId;
+    private Long purchaseId;
 
     private Product product;
 
-    private int clientId;
+    private Hero client;
 
     private int quantity;
 

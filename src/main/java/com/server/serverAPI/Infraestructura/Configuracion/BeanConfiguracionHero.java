@@ -3,14 +3,19 @@ package com.server.serverAPI.Infraestructura.Configuracion;
 
 import com.server.serverAPI.Aplicacion.Service.Hero.*;
 import com.server.serverAPI.Aplicacion.Service.Product.SaveProductService;
+import com.server.serverAPI.Aplicacion.Service.Purchase.SavePurchaseService;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Domain.Repositorio.ProductRepository;
+import com.server.serverAPI.Domain.Repositorio.PurchaseRepository;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.ProductMapper;
+import com.server.serverAPI.Infraestructura.Persistencia.Builder.PurchaseMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.ProductDao;
+import com.server.serverAPI.Infraestructura.Persistencia.DAO.PurchaseDao;
 import com.server.serverAPI.Infraestructura.Persistencia.Repository.Hero.HeroRepositoryImpl;
 import com.server.serverAPI.Infraestructura.Persistencia.Repository.Product.ProductRepositoryImpl;
+import com.server.serverAPI.Infraestructura.Persistencia.Repository.Purchase.PurchaseRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -47,4 +52,13 @@ public class BeanConfiguracionHero {
 
     @Bean
     public SaveProductService SaveProductService(ProductRepository productRepository) {return new SaveProductService(productRepository);}
+
+    @Bean
+    public PurchaseRepositoryImpl PurchaseRepositoryImpl(PurchaseDao purchaseDao, PurchaseMapper purchaseMapper) {return new PurchaseRepositoryImpl(purchaseDao, purchaseMapper);}
+
+    @Bean
+    public SavePurchaseService SavePurchaseService(PurchaseRepository purchaseRepository, HeroRepository heroRepository, ProductRepository productRepository) {
+        return new SavePurchaseService(purchaseRepository, heroRepository, productRepository);
+    }
+
 }

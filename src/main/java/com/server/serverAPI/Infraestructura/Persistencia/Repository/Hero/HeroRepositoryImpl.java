@@ -41,19 +41,19 @@ public class HeroRepositoryImpl implements HeroRepository {
     }
 
     @Override
-    public Hero findById(Integer id) {
+    public Hero findById(Long id) {
        return heroCRUD.findById(id)
                .map(heroMapper::toHero)
                .orElse(null);
     }
 
     @Override
-    public void deleteHero(Integer id) {
+    public void deleteHero(Long id) {
         heroCRUD.deleteById(id);
     }
 
     @Override
-    public Boolean existsById(Integer id) {
+    public Boolean existsById(Long id) {
         return heroCRUD.existsById(id);
     }
 

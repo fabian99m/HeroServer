@@ -15,7 +15,7 @@ public class FindByIdService {
 
     static Logger logger = LoggerFactory.getLogger(FindByIdService.class);
 
-    public Respuesta<Hero> findHeroById(Integer id) {
+    public Respuesta<Hero> findHeroById(Long id) {
         logger.info("Hero.id recibida: "+id);
         Hero hero = HeroServiceUtil.findHeroByid(id, heroRepository);
         return new Respuesta<>(hero);

@@ -14,7 +14,7 @@ public class HeroServiceUtil {
 
     static Logger logger = LoggerFactory.getLogger(HeroServiceUtil.class);
 
-    public static  Hero findHeroByid(Integer codigo, HeroRepository heroRepository){
+    public static Hero findHeroByid(Long codigo, HeroRepository heroRepository){
         Hero heroBd = heroRepository.findById(codigo);
         if(heroBd == null) {
             throw new HeroNoEncontrado("Hero no existente!");
@@ -22,12 +22,11 @@ public class HeroServiceUtil {
         return heroBd;
     }
 
-    public static Boolean existsById(Integer codigo, HeroRepository heroRepository) {
+    public static void existsById(Long codigo, HeroRepository heroRepository) {
         Boolean flag = heroRepository.existsById(codigo);
         if(!flag) {
             throw new HeroNoEncontrado("Hero no existente!");
         }
-        return true;
     }
 
     public static LocalDate convertirFecha(String fecha) {

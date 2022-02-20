@@ -19,4 +19,16 @@ public class ProductRepositoryImpl implements ProductRepository {
         ProductEntity productEntity = productDao.save(productMapper.toProductEntity(product));
         return productMapper.toProduct(productEntity);
     }
+
+    @Override
+    public Boolean existsById(long id) {
+        return productDao.existsById(id);
+    }
+
+    @Override
+    public Product findById(long id) {
+       return productDao.findById(id)
+               .map(productMapper::toProduct)
+               .orElse(null);
+    }
 }

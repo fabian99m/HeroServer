@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Data
 public class Hero {
 
-    private int codigo;
+    private Long codigo;
 
     private String nombre;
 

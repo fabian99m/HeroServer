@@ -1,6 +1,5 @@
 package com.server.serverAPI.Infraestructura.Persistencia.Entidad;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,15 +12,16 @@ public class PurchaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "purchase_id")
-    private int purchaseId;
+    private Long purchaseId;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity product;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "hero_id", referencedColumnName = "id")
     private HeroEntity client;
 
     private int quantity;
-
 
 }

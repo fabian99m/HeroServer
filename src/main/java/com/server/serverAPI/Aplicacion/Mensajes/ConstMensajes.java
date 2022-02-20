@@ -7,4 +7,7 @@ public final class ConstMensajes {
 
     public static final String ProductsaveSucc = "Producto creado con éxito!";
     public static final String ProductaveErr = "Error al momento de crear Producto!";
+
+    public static final String PurchasesaveSucc = "Compra creada con éxito!";
+    public static final String PurchasesaveErr = "Error al momento de crear Compra!";
 } 

@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 import java.util.Optional;
 
-public interface HeroDao extends JpaRepository<HeroEntity, Integer>, JpaSpecificationExecutor<HeroEntity> {
+public interface HeroDao extends JpaRepository<HeroEntity, Long>, JpaSpecificationExecutor<HeroEntity> {
 
     Optional<List<HeroEntity>> findByNameEquals(String name);
+
 }
