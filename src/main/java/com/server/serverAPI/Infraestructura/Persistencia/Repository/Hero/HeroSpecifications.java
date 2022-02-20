@@ -1,4 +1,4 @@
-package com.server.serverAPI.Infraestructura.Persistencia.Repository;
+package com.server.serverAPI.Infraestructura.Persistencia.Repository.Hero;
 
 import com.server.serverAPI.Infraestructura.Persistencia.Entidad.HeroEntity;
 import org.springframework.data.jpa.domain.Specification;

@@ -1,4 +1,4 @@
-package com.server.serverAPI.Infraestructura.Persistencia.Repository;
+package com.server.serverAPI.Infraestructura.Persistencia.Repository.Hero;
 
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;
@@ -66,7 +66,7 @@ public class HeroRepositoryImpl implements HeroRepository {
 
     @Override
     public List<Hero> findByDateBefore(LocalDate date) {
-            Specification<HeroEntity> specification = HeroSpecifications.beforeOf(date); //criteriaQuery builder
+            Specification<HeroEntity> specification = HeroSpecifications.beforeOf(date);
             List<HeroEntity> heroEntityList = heroCRUD.findAll(specification);
 
             return heroMapper.toHeroList(heroEntityList);

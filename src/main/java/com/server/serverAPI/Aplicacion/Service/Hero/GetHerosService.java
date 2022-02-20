@@ -1,4 +1,4 @@
-package com.server.serverAPI.Aplicacion.Service;
+package com.server.serverAPI.Aplicacion.Service.Hero;
 
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;

@@ -1,24 +1,25 @@
-package com.server.serverAPI.Infraestructura.Endpoints;
+package com.server.serverAPI.Infraestructura.Endpoints.Hero;
 
-import com.server.serverAPI.Aplicacion.Service.UpdateNamaService;
+
+import com.server.serverAPI.Aplicacion.Service.Hero.SaveHeroService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("hero")
-public class UpdateNameEndpoint {
+@RequestMapping(path = "hero")
+public class saveHeroEndpoint {
 
     @Autowired
-    UpdateNamaService updateNamaService;
+    private SaveHeroService saveHeroService;
 
-    @PatchMapping()
-    public ResponseEntity<Respuesta<Hero>> updateName(@RequestBody Hero hero){
-        return updateNamaService.updateName(hero);
+    @PostMapping("/save")
+    public ResponseEntity<Respuesta<Hero>> saveHero(@RequestBody Hero hero) {
+        return saveHeroService.saveHero(hero);
     }
 }

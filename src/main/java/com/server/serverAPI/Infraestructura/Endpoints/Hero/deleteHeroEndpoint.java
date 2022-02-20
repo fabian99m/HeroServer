@@ -1,6 +1,6 @@
-package com.server.serverAPI.Infraestructura.Endpoints;
+package com.server.serverAPI.Infraestructura.Endpoints.Hero;
 
-import com.server.serverAPI.Aplicacion.Service.DeleteHeroService;
+import com.server.serverAPI.Aplicacion.Service.Hero.DeleteHeroService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 import org.springframework.beans.factory.annotation.Autowired;

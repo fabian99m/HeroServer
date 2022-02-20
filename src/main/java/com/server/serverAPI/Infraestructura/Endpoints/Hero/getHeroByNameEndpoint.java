@@ -1,6 +1,6 @@
-package com.server.serverAPI.Infraestructura.Endpoints;
+package com.server.serverAPI.Infraestructura.Endpoints.Hero;
 
-import com.server.serverAPI.Aplicacion.Service.FindByDateBeforeService;
+import com.server.serverAPI.Aplicacion.Service.Hero.GetHeroByNameService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("hero")
-public class FindByDateBeforeEndpoint {
+@RequestMapping(value = "hero")
+public class getHeroByNameEndpoint {
 
     @Autowired
-    private FindByDateBeforeService findByDateBeforeService;
+    private GetHeroByNameService getHeroByNameService;
 
-    @GetMapping(value = "/listbefore", params = "fecha", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<Respuesta<List<Hero>>> getheros(@RequestParam String fecha) {
-        return findByDateBeforeService.findByDateBefore(fecha);
+    @GetMapping(value = "/list", params = "nombre", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<Respuesta<List<Hero>>> getheros(@RequestParam String nombre) {
+       return getHeroByNameService.getHerosByName(nombre);
     }
-
 
 }

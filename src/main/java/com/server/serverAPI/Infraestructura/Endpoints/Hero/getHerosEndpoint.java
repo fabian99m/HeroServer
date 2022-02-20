@@ -1,6 +1,6 @@
-package com.server.serverAPI.Infraestructura.Endpoints;
+package com.server.serverAPI.Infraestructura.Endpoints.Hero;
 
-import com.server.serverAPI.Aplicacion.Service.GetHerosService;
+import com.server.serverAPI.Aplicacion.Service.Hero.GetHerosService;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Infraestructura.Respuesta.Respuesta;
 import org.springframework.beans.factory.annotation.Autowired;
