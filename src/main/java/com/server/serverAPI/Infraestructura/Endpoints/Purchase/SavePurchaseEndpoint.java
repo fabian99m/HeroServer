@@ -19,7 +19,7 @@ public class SavePurchaseEndpoint {
     private SavePurchaseService savePurchaseService;
 
     @PostMapping("/save")
-    public ResponseEntity<Respuesta<Purchase>> saveHero(@RequestBody Purchase purchase) {
+    public ResponseEntity<Respuesta<Purchase>> saveHero( @RequestBody Purchase purchase) {
         return savePurchaseService.savePurchase(purchase);
     }
 

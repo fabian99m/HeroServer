@@ -8,6 +8,7 @@ import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Domain.Repositorio.ProductRepository;
 import com.server.serverAPI.Domain.Repositorio.PurchaseRepository;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
+import com.server.serverAPI.Infraestructura.Persistencia.Builder.ListPurchaseBuilder;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.ProductMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.Builder.PurchaseMapper;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
@@ -54,7 +55,9 @@ public class BeanConfiguracionHero {
     public SaveProductService SaveProductService(ProductRepository productRepository) {return new SaveProductService(productRepository);}
 
     @Bean
-    public PurchaseRepositoryImpl PurchaseRepositoryImpl(PurchaseDao purchaseDao, PurchaseMapper purchaseMapper) {return new PurchaseRepositoryImpl(purchaseDao, purchaseMapper);}
+    public PurchaseRepositoryImpl PurchaseRepositoryImpl(PurchaseDao purchaseDao, PurchaseMapper purchaseMapper, ListPurchaseBuilder listPurchaseBuilder) {
+        return new PurchaseRepositoryImpl(purchaseDao, purchaseMapper, listPurchaseBuilder);
+    }
 
     @Bean
     public SavePurchaseService SavePurchaseService(PurchaseRepository purchaseRepository, HeroRepository heroRepository, ProductRepository productRepository) {

@@ -2,6 +2,8 @@ package com.server.serverAPI.Domain.Modelo;
 
 import lombok.Data;
 
+import javax.validation.constraints.Min;
+
 @Data
 public class Product {
 
@@ -9,6 +11,7 @@ public class Product {
 
     private String name;
 
+    @Min(0)
     private int stock;
 
 }
