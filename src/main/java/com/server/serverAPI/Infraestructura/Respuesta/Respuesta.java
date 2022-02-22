@@ -16,12 +16,11 @@ public class Respuesta<T> implements Serializable {
     
     private T datos;
     private String mensaje = "";
-   // private int status;
+
 
     public Respuesta(T dato){
         this.datos = dato;
         this.mensaje = HttpStatus.OK.getReasonPhrase();
-      //  this.status = HttpStatus.OK.value();
     }
 
     public Respuesta(String mensaje, T dato){
@@ -34,10 +33,4 @@ public class Respuesta<T> implements Serializable {
         this.datos=null;
     }
 
-    public Respuesta(HttpStatus httpStatus, T dato){
-        this.datos = dato;
-       // this.status = httpStatus.value();
-    }
-
-   
 }

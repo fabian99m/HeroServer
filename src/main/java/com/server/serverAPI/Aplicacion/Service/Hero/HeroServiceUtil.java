@@ -3,6 +3,7 @@ package com.server.serverAPI.Aplicacion.Service.Hero;
 import com.server.serverAPI.Domain.Modelo.Hero;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Infraestructura.Error.HeroNoEncontrado;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,17 +15,19 @@ public class HeroServiceUtil {
 
     static Logger logger = LoggerFactory.getLogger(HeroServiceUtil.class);
 
-    public static Hero findHeroByid(Long codigo, HeroRepository heroRepository){
-        Hero heroBd = heroRepository.findById(codigo);
+    public static Hero findHeroByid(Long id, HeroRepository heroRepository){
+        Hero heroBd = heroRepository.findById(id);
         if(heroBd == null) {
+            logger.warn("Hero no existente con Id: "+id);
             throw new HeroNoEncontrado("Hero no existente!");
         }
         return heroBd;
     }
 
-    public static void existsById(Long codigo, HeroRepository heroRepository) {
-        Boolean flag = heroRepository.existsById(codigo);
+    public static void existsById(Long id, HeroRepository heroRepository) {
+        Boolean flag = heroRepository.existsById(id);
         if(!flag) {
+            logger.warn("Hero no existente con Id: "+id);
             throw new HeroNoEncontrado("Hero no existente!");
         }
     }
@@ -38,7 +41,6 @@ public class HeroServiceUtil {
             logger.error(e.getMessage());
             return null;
         }
-
     }
 
 }

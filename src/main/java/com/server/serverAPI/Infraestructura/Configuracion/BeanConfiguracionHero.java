@@ -3,14 +3,13 @@ package com.server.serverAPI.Infraestructura.Configuracion;
 
 import com.server.serverAPI.Aplicacion.Service.Hero.*;
 import com.server.serverAPI.Aplicacion.Service.Product.SaveProductService;
+import com.server.serverAPI.Aplicacion.Service.Purchase.ListAllPurchasesService;
+import com.server.serverAPI.Aplicacion.Service.Purchase.ListPurchasesByIdHeroService;
 import com.server.serverAPI.Aplicacion.Service.Purchase.SavePurchaseService;
 import com.server.serverAPI.Domain.Repositorio.HeroRepository;
 import com.server.serverAPI.Domain.Repositorio.ProductRepository;
 import com.server.serverAPI.Domain.Repositorio.PurchaseRepository;
-import com.server.serverAPI.Infraestructura.Persistencia.Builder.HeroMapper;
-import com.server.serverAPI.Infraestructura.Persistencia.Builder.ListPurchaseBuilder;
-import com.server.serverAPI.Infraestructura.Persistencia.Builder.ProductMapper;
-import com.server.serverAPI.Infraestructura.Persistencia.Builder.PurchaseMapper;
+import com.server.serverAPI.Infraestructura.Persistencia.Builder.*;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.HeroDao;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.ProductDao;
 import com.server.serverAPI.Infraestructura.Persistencia.DAO.PurchaseDao;
@@ -55,13 +54,23 @@ public class BeanConfiguracionHero {
     public SaveProductService SaveProductService(ProductRepository productRepository) {return new SaveProductService(productRepository);}
 
     @Bean
-    public PurchaseRepositoryImpl PurchaseRepositoryImpl(PurchaseDao purchaseDao, PurchaseMapper purchaseMapper, ListPurchaseBuilder listPurchaseBuilder) {
-        return new PurchaseRepositoryImpl(purchaseDao, purchaseMapper, listPurchaseBuilder);
+    public PurchaseRepositoryImpl PurchaseRepositoryImpl(PurchaseDao purchaseDao, PurchaseMapper purchaseMapper, ListPurchaseBuilder listPurchaseBuilder, ProductDTOMapper productDTOMapper) {
+        return new PurchaseRepositoryImpl(purchaseDao, purchaseMapper, listPurchaseBuilder, productDTOMapper);
     }
 
     @Bean
     public SavePurchaseService SavePurchaseService(PurchaseRepository purchaseRepository, HeroRepository heroRepository, ProductRepository productRepository) {
         return new SavePurchaseService(purchaseRepository, heroRepository, productRepository);
+    }
+
+    @Bean
+    public ListAllPurchasesService ListAllPurchasesService(PurchaseRepository purchaseRepository) {
+        return new ListAllPurchasesService(purchaseRepository);
+    }
+
+    @Bean
+    public ListPurchasesByIdHeroService ListPurchasesByIdHeroService(PurchaseRepository purchaseRepository, HeroRepository heroRepository) {
+        return new ListPurchasesByIdHeroService(purchaseRepository, heroRepository);
     }
 
 }
